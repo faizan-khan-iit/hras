@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	<h2>Student Details </h2>
+	{% if answer %}
+	{% for name, roll, id, receipt, nd, cont, gender, dept, course, year, prev_h, prev_r, g_name, g_cont, g_add, lg_name, lg_cont, lg_add, bank, h_name in answer %}
+		Name : {{name}} <br>
+		Roll : {{roll}} <br>
+		Email ID : {{id}} <br>
+		Mess Fee Receipt Number : {{receipt}} <br>
+		Contact Number : {{cont}} <br>
+		Gender : {{gender}} <br>
+		Department : {{dept}} <br>
+		Course : {{course}} <br>
+		Year : {{year}} <br>
+		Previous Hostel Name : {{prev_h}} <br>
+		Previous Room Number : {{prev_r}} <br>
+		Guardian Name : {{g_name}}<br>
+		Guardian Contact Number : {{g_cont}}<br>
+		Guardian Address : {{g_add}} <br>
+		Local Guardian Name : {{lg_name}}<br>
+		Local Guardian Contact Number : {{lg_cont}}<br>
+		Local Guardian Address : {{lg_add}} <br>
+		Bank Account Number : {{bank}} <br>
+		Hostel Name : {{h_name}} <br>
+	{% endfor %}
+	{% else %}
+	Not yet registered
+	{% endif %}
+</body>
+</html>

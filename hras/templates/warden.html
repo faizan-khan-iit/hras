@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	<h2> {{ message }} </h2>
+	<form action="/stud_info/" method = "POST" id="form">
+		{% csrf_token %}
+		<fieldset>
+		    <legend>See Student Info:</legend>
+			Roll Number : <br>
+	  			<input type="text" name="roll_no" required><br>
+		</fieldset>
+		<input type="submit" value="Get Details">
+	</form>
+</body>
+</html>

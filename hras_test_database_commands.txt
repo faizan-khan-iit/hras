@@ -1,0 +1,113 @@
+CREATE DATABASE hras_test;
+USE hras_test;
+
+CREATE TABLE branch(
+	department varchar(100) NOT NULL,
+	course varchar(10) NOT NULL,
+	year int unsigned NOT NULL,
+	strength int NOT NULL,
+	CONSTRAINT pk_branchID PRIMARY KEY (department, course, year)
+);
+
+CREATE TABLE hostel(
+	name varchar(100) NOT NULL,
+	capacity int unsigned NOT NULL,
+	head_warden varchar(50) NOT NULL,
+	head_warden_email varchar(50) NOT NULL,
+	head_warden_passwd varchar(50) NOT NULL,
+	gender enum("M","F") NOT NULL,
+	CONSTRAINT pk_hostelID PRIMARY KEY (name)
+);
+
+CREATE TABLE student(
+	name varchar(50) NOT NULL,
+	roll_num varchar(15) UNIQUE NOT NULL,
+	email varchar(50) UNIQUE NOT NULL,
+	mess_fee_receipt_num varchar(20) UNIQUE NOT NULL,
+	no_dues_certificate char(1) NOT NULL,
+	contact_num varchar(13) NOT NULL,
+	gender enum("M","F") NOT NULL,
+	department varchar(100) NOT NULL,
+	course varchar(10) NOT NULL,
+	year int unsigned NOT NULL,
+	prev_hostel_name varchar(100) NOT NULL,
+	prev_hostel_room int NOT NULL,
+	guardian_name varchar(50) NOT NULL,
+	guardian_contact varchar(13) NOT NULL,
+	guardian_address varchar(300) NOT NULL,
+	local_guardian_name varchar(50) NOT NULL,
+	local_guardian_contact varchar(13) NOT NULL,
+	local_guardian_address varchar(300) NOT NULL,
+	bank_account_number varchar(100),
+	hostel_name varchar(100) NOT NULL,
+	CONSTRAINT pk_studentID PRIMARY KEY (roll_num),
+	CONSTRAINT fk_stud_br FOREIGN KEY (department, course, year)
+	REFERENCES branch(department, course, year)
+	ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT fk_stud_host FOREIGN KEY (hostel_name)
+	REFERENCES hostel(name)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE room(
+	number int unsigned NOT NULL,
+	roll_num varchar(15) NOT NULL UNIQUE,
+	hostel_name varchar(100),
+	CONSTRAINT pk_roomID PRIMARY KEY (roll_num),
+	CONSTRAINT fk_room_stud FOREIGN KEY (roll_num)
+	REFERENCES student(roll_num)
+	ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT fk_room_hostel FOREIGN KEY (hostel_name)
+	REFERENCES hostel(name)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE resides_in(
+	hostel_name varchar(100) NOT NULL,
+	department varchar(100) NOT NULL,
+	course varchar(10) NOT NULL,
+	year int unsigned NOT NULL,
+	strength int unsigned NOT NULL,
+	range_start int unsigned NOT NULL,
+	range_end int unsigned NOT NULL,
+	seater int unsigned DEFAULT 2,
+	CONSTRAINT pk_residesID PRIMARY KEY (hostel_name, department, course, year),
+	CONSTRAINT fk_resides_br FOREIGN KEY (department, course, year)
+	REFERENCES branch(department, course, year)
+	ON DELETE CASCADE ON UPDATE CASCADE,
+	CONSTRAINT fk_resides_host FOREIGN KEY (hostel_name)
+	REFERENCES hostel(name)
+	ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE student_id(
+	roll_num varchar(15) PRIMARY KEY,
+	email varchar(50) NOT NULL UNIQUE,
+	passwd varchar(40) NOT NULL
+);
+
+delimiter //
+CREATE TRIGGER trig_sd_check BEFORE INSERT ON branch 
+     FOR EACH ROW 
+     BEGIN 
+     IF NEW.year>5 THEN
+     SET NEW.year=1; 
+     END IF; 
+     END
+     //
+delimiter ;
+
+
+
+LOAD DATA LOCAL INFILE "/home/faizan/branch.txt"
+INTO  TABLE branch;
+LOAD DATA LOCAL INFILE "/home/faizan/hostel.txt"
+INTO  TABLE hostel;
+LOAD DATA LOCAL INFILE "/home/faizan/student.txt"
+INTO  TABLE student;
+LOAD DATA LOCAL INFILE "/home/faizan/resides_in.txt"
+INTO  TABLE resides_in;
+LOAD DATA LOCAL INFILE "/home/faizan/room.txt"
+INTO  TABLE room;
+LOAD DATA LOCAL INFILE "/home/faizan/user_id.txt"
+INTO  TABLE student_id;

@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	<h2> Verify with your institute credentials </h2>
+	<form action="/check_room/" method = "POST" id="form">
+		{% csrf_token %}
+		<fieldset>
+		    <legend>Institute LogIn credentials:</legend>
+			User ID:<br>
+	  			<input type="text" name="user_id" required><br>
+	  		Password:<br>
+	  			<input type="password" name="password" required><br>
+		</fieldset>
+		<br>
+		<fieldset>
+		    <legend>Student Information:</legend>
+			Roll No : <br>
+	  			<input type="number" name="roll_no" required><br>
+	  		Department : <br>
+	  			<select name="dept">
+					<option value="CSE">CSE</option>
+					<option value="META">META</option>
+					<option value="EEE">EEE</option>
+					<option value="ECE">ECE</option>
+				</select>
+			<br>
+			Year : <br>
+	  			<select name="year">
+					<option value=2>II</option>
+					<option value=3>III</option>
+					<option value=4>IV</option>
+					<option value=5>V</option>
+				</select>
+			<br>
+		</fieldset>
+		<input type="submit" value="Proceed to registration" id="submit">
+	</form>
+	<br>
+	<a href="/hostel_info/"> See Hostel Info </a>
+</body>
+</html>

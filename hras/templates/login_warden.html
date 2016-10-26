@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	<h2> Warden LogIn </h2>
+	<form action="/warden/" method = "POST" id="form">
+		{% csrf_token %}
+		<fieldset>
+		    <legend>LogIn credentials:</legend>
+			User ID : <br>
+	  			<input type="text" name="user_id" required><br>
+	  		Password : <br>
+	  			<input type="password" name="password" required><br>
+		</fieldset>
+		{% if error %}
+			{{message}}<br>
+		{% endif %}
+		<input type="submit" value="LogIn">
+	</form>
+	<br>
+	<a href="/hostel_info/"> See Hostel Info </a>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	{% if valid_id %}
+		<h1>Please enter valid info</h1>
+		<form action= "/end/" method = "POST"  id="form">
+			{% csrf_token %}
+			<fieldset>
+			    <legend>Student Information:</legend>
+				Institute Roll Number : 
+		  			<input type="text" name="roll_no" value={{roll_no}} readonly>
+		  		<br>
+		  		Name :
+		  			<input type="text" name="name" required>
+		  		<br>
+		  		Email ID : 
+		  			<input type="text" name="user_id" value={{user_id}} readonly>
+		  		<br>
+		  		Gender: 
+		  			<input type="text" name="gender" value="M" readonly>
+				<br>
+		  		Department :
+		  			<input type="text" name="dept" value={{ dept }} readonly>
+				<br>
+				Year : 
+					<input type="number" name="year" value={{ year }} readonly>
+				<br>
+				Course :
+					<select name="course">
+						<option value="B.Tech">B.Tech</option>
+						<option value="IDD">IDD</option>
+					</select>
+				<br>
+				Guardian Name : 
+		  			<input type="text" name="g_name" required>
+		  		<br>
+		  		Local Guardian Name :
+		  			<input type="text" name="lg_name" required>
+		  		<br>
+			</fieldset>
+			<fieldset>
+			    <legend>Contact Information:</legend>
+				Contact Number : 
+		  			<input type="number" name="contact_num" maxlength="10"  required>
+		  		<br>
+		  		Guardian Contact Number : 
+		  			<input type="number" name="g_contact_num" maxlength="10" required>
+		  		<br>
+		  		Guardian Address : 
+		  			<textarea rows="10" cols="30" name="g_add"  required></textarea>
+		  		<br>
+			  	Local Guardian Contact Number : 
+		  			<input type="number" name="lg_contact_num" maxlength="10" required>
+		  		<br>
+		  		Local Guardian Address : 
+		  			<textarea rows="10" cols="30" name="lg_add"  required></textarea>
+		  		<br>
+			</fieldset>
+			<fieldset>
+			    <legend>Hostel Information:</legend>
+			    Current Hostel Name:
+					<input type="text" name="h_name" value={{h_name}} readonly>
+			  	<br>
+		  		Room Number to allot in current Hostel:
+		  			<input type="number" name="room_num" value={{room_num}} readonly>
+			  	<br>
+		  		Previous Hostel Name : 
+		  			<input type="text" name="prev_host"  required>
+		  		<br>
+		  		Previous Hostel Room Number : 
+		  			<input type="number" name="prev_host_room" maxlength="3" min="1" required>
+		  		<br>
+			</fieldset>
+			<fieldset>
+			    <legend>Other Information:</legend>
+			    Mess Fee Receipt Number : 
+					<input type="text" name="receipt" required>
+			  	<br>
+		  		Bank Account Number : 
+		  			<input type="number" name="bank" required>
+			  	<br>
+		  	</fieldset>
+			<input type="submit" value="Submit">
+		</form>
+	{% else %}
+		<h2> {{ message }} </h2>
+		<br>
+		<a href = "/login"> Back to Student Login </a>
+	{% endif %}
+</body>
+</html>

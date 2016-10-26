@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	<h1>Welcome to Hostel Room Allotment System, IIT(BHU) </h1>
+	
+	<a href = "/login" class="1"> Proceed to Student Login </a>
+	<br>
+	<a href = "/login_warden" class="1"> Proceed to Warden Login </a>
+	<br><br>
+	<div class = "rules">
+	<h2> Rules and Regulations </h2>
+	<ul>
+		<li>The student should apply online using their institute e-mail IDs only. Personal IDs and
+		unauthenticated users will not be allowed to apply for hostel room allotment.</li>
+		<li> The students of a particular batch may only apply in the hostel allotted to them as
+		decided by the administration.</li>
+		<li> The student may only fill the room preference from the range of rooms allotted to the
+		particular batch the student belongs in.</li>
+		<li> The rooms will be allotted strictly on a First Come First Serve basis.</li>
+		<li> No student is allotted a room until his Mess fees has been paid. The Mess Fees receipt
+reference number provided by the student should be consistent.</li>
+		<li> The students may fill only one choice and it is advised that the students fill their choice carefully.</li>
+		<li> Once the student has filled in his/her choice, the choice may not be changed. All
+applications for change of choice will be dealt by the Head Warden separately.</li>
+
+	</ul>
+	</div>
+</body>
+</html>

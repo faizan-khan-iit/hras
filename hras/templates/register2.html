@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+</head>
+<body>
+	{% if valid_id %}
+		<h1>Please enter valid info</h1>
+		<form action= "/form/" method = "POST" >
+			{% csrf_token %}
+			<fieldset>
+			    <legend>Enter Information:</legend>
+				User ID:<br>
+		  			<input type="text" name="user_id"><br>
+		  		Name:<br>
+		  			<input type="text" name="name"><br>
+		  		Room Number to allot:<br>
+		  			<input type="text" name="room_no"><br>
+		  		Branch : 
+		  			<select name="branch_id">
+						<option value="CSE">CSE</option>
+						<option value="META">META</option>
+						<option value="EEE">EEE</option>
+						<option value="ECE">ECE</option>
+					</select>
+				<br>
+				Year : 
+		  			<select name="year">
+						<option value="2nd Year">II</option>
+						<option value="3rd Year">III</option>
+						<option value="4th Year">IV</option>
+						<option value="5th Year">V</option>
+					</select>
+				<br>
+		  		<input type="submit" value="Submit">
+			</fieldset>
+		</form>
+	{% else %}
+		<h2> Please login with a valid ID </h2>
+		<br>
+		<a href = "/login"> Back to Login </a>
+	{% endif %}
+</body>
+</html>

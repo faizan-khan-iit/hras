@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	{% if valid_id %}
+		<form action= "/register/" method = "POST" id="form">
+			{% csrf_token %}
+			<fieldset>
+			    <legend>Student Information:</legend>
+				User ID:<br>
+		  			<input type="text" name="user_id" value={{user_id}} readonly><br>
+				Roll No : <br>
+		  			<input type="number" name="roll_no" value={{roll_no}} readonly><br>
+		  		Department : <br>
+		  			<input type="text" name="dept" value={{ dept }} readonly>
+				<br>
+				Year : <br>
+					<input type="number" name="year" value={{ year }} readonly>
+				<br>
+	  		</fieldset>
+		{% if show %}
+			<h1>{{ message }}</h1>
+		{% endif %}
+			<fieldset>
+			    <legend>Hostel room Information:</legend>
+				Hostel Name : <br>
+		  			<input type="text" name="h_name" value={{h_name}} readonly><br>
+		  		Room Number : <br>
+		  			<input type="number" name="room_num" min="1" required><br>
+	  		</fieldset>
+
+			<input type="submit" value="Submit" id = "submit">
+		</form>
+		<br>
+		<a href = "/hostel_info/"> See Hostel Info </a>
+		<br>
+		<a href = "/all_info/"> See current allotment Info </a>
+		<br>
+	{% else %}
+		<h2> {{ message }} </h2>
+		<br>
+		<a href = "/login/"> Back to Student Login </a>
+	{% endif %}
+</body>
+</html>

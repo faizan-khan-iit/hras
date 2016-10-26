@@ -1,0 +1,1 @@
+mysqldump -u root -p hras_test > /home/faizan/Desktop

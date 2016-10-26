@@ -1,0 +1,81 @@
+{% load static %}
+body { 
+	font: 75% georgia, sans-serif;
+	line-height: 3; 
+	margin: 0; 
+	padding: 0;
+	background-color: #F5F3EE;
+	text-align:center
+}
+
+a:link { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: #C1E1A6;
+}
+
+a:visited { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: #D4CDDC;
+}
+
+a:hover, a:focus, a:active { 
+	text-decoration: underline; 
+	color: #9685BA;
+}
+
+h1 { 
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+h2 {  
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+input, textarea, select { 
+    padding: 10px; 
+    border: solid 1px #EEEEEE; 
+    outline: 0; 
+    font: normal 13px/100% Verdana, Tahoma, sans-serif; 
+    width: 200px; 
+    background: #FFFFFF; 
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    background: -webkit-gradient(linear, left top, left 25, from(#EEEEEE), color-stop(4%, #EEEEEE), to(#FFFFFF)); 
+    background: -moz-linear-gradient(top, #EEEEEE, #000000 1px, #EEEEEE 25px); 
+} 
+   
+textarea { 
+    width: 400px; 
+    max-width: 400px; 
+    height: 150px; 
+    line-height: 150%; 
+} 
+   
+input:hover, textarea:hover, select:hover,
+input:focus, textarea:focus, select:focus{ 
+    border-color: #000000; 
+} 
+
+a {
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ 
+li {
+    border-bottom: 1px solid #ccc;
+}

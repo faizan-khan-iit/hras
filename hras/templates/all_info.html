@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HRAS</title>
+	<link rel="stylesheet" href="{% static "base.css" %}" />
+</head>
+<body>
+	<h1>Welcome to HRAS </h1>
+	{% if list_of_rooms %}
+	List of currently occupied rooms in {{ h_name }}
+		<ul>
+	    {% for roll, room in list_of_rooms %}
+	    <li>{{ roll }}, {{ room }}</li>
+	    {% empty %}
+	    <p> No rooms booked as of yet </p>
+	    {% endfor %}
+	{% endif %}
+</ul>
+</body>
+</html>
