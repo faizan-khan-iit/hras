@@ -4,20 +4,6 @@ Create an online web application for the purpose of efficient and effective **ho
 
 --------
 
-
-### Motivation of the Project
-
-Currently the hostel room allotment for students is done manually through
-applications to Wardens of the hostels and the students need to be present physically for
-the same.
-
-
-The project aims to transfer most of the manual labour to an automated process for ease of
-use for both the students and the administrators (Wardens). This should result in an
-efficient and user friendly system for Hostel Allotment to students.
-
---------
-
 ### Breakdown of the System:
 
 1) **Log-In/Verification Section:** The first section of the Hostel Room Allotment system, which makes sure the system is accessed only by authorized users. Basically consists of a form with required fields including a user ID (the institute e-mail ID) and password. This is checked against the established institute database.
